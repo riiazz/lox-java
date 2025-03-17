@@ -10,6 +10,7 @@ import com.lox.Expr.Unary;
 import com.lox.Expr.Variable;
 import com.lox.Stmt.Block;
 import com.lox.Stmt.Expression;
+import com.lox.Stmt.If;
 import com.lox.Stmt.Print;
 import com.lox.Stmt.Var;
 
@@ -171,6 +172,17 @@ public class Interpreter implements Expr.Visitor<Object>,
 	@Override
 	public Void visitExpressionStmt(Expression stmt) {
 		evaluate(stmt.expression);
+		return null;
+	}
+
+	@Override
+	public Void visitIfStmt(If stmt) {
+		if (isTruthy(evaluate(stmt.condition))) {
+			execute(stmt.thenBranch);
+		} else if (stmt.elseBranch != null) {
+			execute(stmt.elseBranch);
+		}
+
 		return null;
 	}
 
