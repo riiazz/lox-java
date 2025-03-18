@@ -4,6 +4,7 @@ import com.lox.Expr.Assign;
 import com.lox.Expr.Binary;
 import com.lox.Expr.Grouping;
 import com.lox.Expr.Literal;
+import com.lox.Expr.Logical;
 import com.lox.Expr.Unary;
 import com.lox.Expr.Variable;
 
@@ -56,5 +57,11 @@ public class AstPrinter implements Expr.Visitor<String> {
 	public String visitAssignExpr(Assign expr) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'visitAssignExpr'");
+	}
+
+	@Override
+	public String visitLogicalExpr(Logical expr) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'visitLogicalExpr'");
 	}
 }
