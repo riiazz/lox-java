@@ -13,6 +13,7 @@ import com.lox.Expr.Unary;
 import com.lox.Expr.Variable;
 import com.lox.Stmt.Block;
 import com.lox.Stmt.Expression;
+import com.lox.Stmt.Function;
 import com.lox.Stmt.If;
 import com.lox.Stmt.Print;
 import com.lox.Stmt.Var;
@@ -228,6 +229,13 @@ public class Interpreter implements Expr.Visitor<Object>,
 	@Override
 	public Void visitExpressionStmt(Expression stmt) {
 		evaluate(stmt.expression);
+		return null;
+	}
+
+	@Override
+	public Void visitFunctionStmt(Function stmt) {
+		LoxFunction function = new LoxFunction(stmt);
+		environment.define(stmt.name.lexeme, function);
 		return null;
 	}
 
