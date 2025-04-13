@@ -16,6 +16,7 @@ import com.lox.Stmt.Expression;
 import com.lox.Stmt.Function;
 import com.lox.Stmt.If;
 import com.lox.Stmt.Print;
+import com.lox.Stmt.Return;
 import com.lox.Stmt.Var;
 import com.lox.Stmt.While;
 
@@ -255,6 +256,14 @@ public class Interpreter implements Expr.Visitor<Object>,
 		Object value = evaluate(stmt.expression);
 		System.out.println(stringify(value));
 		return null;
+	}
+
+	@Override
+	public Void visitReturnStmt(Stmt.Return stmt) {
+		Object value = null;
+		if (stmt.value != null) value = evaluate(stmt.value);
+
+		throw new com.lox.Return(value);
 	}
 
 	@Override
