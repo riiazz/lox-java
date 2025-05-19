@@ -164,7 +164,7 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 	public Void visitCallExpr(Call expr) {
 		resolve(expr.callee);
 
-		for (Expr arguments : expr.arguments) {
+		for (Expr argument : expr.arguments) {
 			resolve(argument);
 		}
 
